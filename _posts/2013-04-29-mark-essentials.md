@@ -168,7 +168,7 @@ Example:
 
 One example may be:
 
-![cat](/assets/images/cat.jpg)
+![cat](/assets/images/gcat.jpg)
 
 <br />
 ###9, How to escape the special characters?
@@ -206,18 +206,21 @@ Example:
 	* Green
 	* Blue
 is equivalent to:
+
 	+ Red
 	+ Green
 	+ Blue
 and
+
 	- Red
 	- Green
 	- Blue
+	
 The effect is:
 
-*  Red
-*  Green
-*  Blue
+  *  Red  
+  *  Green  
+  *  Blue  
 
 ####For ordered list, use numbers followed by periods:
 Example:
@@ -227,9 +230,9 @@ Example:
 	3. Parish
 The effect is:
 
-1. Bird
-2. Mchale
-3. Parish
+  1. Bird  
+  2. Mchale  
+  3. Parish  
 
 	
 
