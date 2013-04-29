@@ -16,6 +16,8 @@ An English one is: [markdown syntax English](http://daringfireball.net/projects/
 Let's Cook!
 ===========
 <br />
+![wine](/assets/images/wine.jpg)
+<br />
 
 ###1, How can I write a title?
 ####You can use multiple "="(highest level title) and "-"(secondary level).
@@ -166,7 +168,7 @@ Example:
 
 One example may be:
 
-![cat](/assets/cat.jpg)
+![cat](/assets/images/cat.jpg)
 
 <br />
 ###9, How to escape the special characters?
@@ -194,5 +196,40 @@ The effect is:
 	!  exclamation mark
 
 
+<br />
+###10, How to write a list?
+####For unordered lists, use asterisks, pluses, or hyphens
+
+Example:
+
+	* Red
+	* Green
+	* Blue
+is equivalent to:
+	+ Red
+	+ Green
+	+ Blue
+and
+	- Red
+	- Green
+	- Blue
+The effect is:
+
+*  Red
+*  Green
+*  Blue
+
+####For ordered list, use numbers followed by periods:
+Example:
+
+	1. Bird
+	2. Mchale
+	3. Parish
+The effect is:
+
+1. Bird
+2. Mchale
+3. Parish
 
 	
+
