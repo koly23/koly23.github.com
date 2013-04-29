@@ -1,5 +1,6 @@
 ---
 layout: post
+description: The jekyll official introduction
 category : lessons
 tagline: "Supporting tagline"
 tags : [intro, beginner, jekyll, tutorial]
