@@ -223,8 +223,10 @@ pre {
   text-transform: uppercase;
 }
 .the-header .nav-global .forkme {
-  position: relative;
-  top: 2px;
+  text-transform: lowercase;
+}
+.the-header .nav-global .forkme a{
+  color: #32af1f;
 }
 /* MAIN
 --------------------------------------------------------------------------------- */
