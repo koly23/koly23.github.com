@@ -1,7 +1,7 @@
 ---
 layout: post
-title: "markdown essentials"
-description: ""
+title: "Markdown Essentials"
+description: "The is the markdown cookbook"
 category: cookbook
 tags: [markdown]
 ---
@@ -168,7 +168,7 @@ Example:
 
 One example may be:
 
-![cat](/assets/images/gcat.jpg)
+![cat](/assets/images/cat.jpg)
 
 <br />
 ###9, How to escape the special characters?
