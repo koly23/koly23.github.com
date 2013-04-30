@@ -14,7 +14,7 @@ tagline: Supporting tagline
 
 ####{{ post.description }}  
 *Category: {{ post.category }}*  
-*Tags: {{ post.tags }}*
+*Tags: {{ post.tags | array_to_sentence_string }}*
 
 ---
 {% endfor %}

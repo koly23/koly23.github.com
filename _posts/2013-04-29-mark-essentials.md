@@ -216,6 +216,8 @@ and
 	- Red
 	- Green
 	- Blue
+
+**One note is you need to type a space before the text.**
 	
 The effect is:
 
