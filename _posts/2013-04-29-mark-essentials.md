@@ -19,6 +19,15 @@ Let's Cook!
 ![wine](/assets/images/wine.jpg)
 <br />
 
+* [How can I write a title?](#1_how_can_i_write_a_title)
+* [How to make a paragraph or line break?](#2_how_to_make_a_paragraph_or_line_break)
+* [How to display the original format(like code)?](#3_how_to_display_the_original_formatlike_code)
+* [How can I insert a link?](#4_how_can_i_insert_a_link)
+* [How to emphasis something?](#5_how_to_emphasis_something)
+* [How to insert a code piece in a line?](#6_how_to_insert_a_code_piece_in_a_line)
+* [How to insert a horizontal rules?](#7_how_to_insert_a_horizontal_rules)
+* [How to escape the special characters?](#8_how_to_escape_the_special_characters)
+* [How to write a list?](#9_how_to_write_a_list)
 
 ###1, How can I write a title?
 ####You can use multiple "="(highest level title) and "-"(secondary level).
@@ -113,6 +122,19 @@ The effect is:
 <http://koly23.github.io>
 	
 <br />
+
+####For inner link, user`[](#id)`
+Example:
+
+	[goto 7](#7_how_to_insert_a_horizontal_rules)
+	
+This will link to the "7, How to insert a horizontal rules?"
+
+Effect:  
+[goto 7](#7_how_to_insert_a_horizontal_rules)
+
+When a heading is created, an id will be created automatically. All the characters in the id is lowercase, and spaces are converted to underscore. For other rules, may **check the generated html**.
+
 ###5, How to emphasis something?
 ####You can use either a pair of single(double) "\*" or "\_".
 
