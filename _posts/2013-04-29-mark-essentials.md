@@ -26,8 +26,9 @@ Let's Cook!
 * [How to emphasis something?](#5_how_to_emphasis_something)
 * [How to insert a code piece in a line?](#6_how_to_insert_a_code_piece_in_a_line)
 * [How to insert a horizontal rules?](#7_how_to_insert_a_horizontal_rules)
-* [How to escape the special characters?](#8_how_to_escape_the_special_characters)
-* [How to write a list?](#9_how_to_write_a_list)
+* [How to insert an image?](#8_how_to_insert_an_image)
+* [How to escape the special characters?](#9_how_to_escape_the_special_characters)
+* [How to write a list?](#10_how_to_write_a_list)
 
 ###1, How can I write a title?
 ####You can use multiple "="(highest level title) and "-"(secondary level).
