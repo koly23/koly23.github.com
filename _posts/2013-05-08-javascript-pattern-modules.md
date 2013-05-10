@@ -3,14 +3,14 @@ layout: post
 title: "Javascript pattern - Modules"
 description: "A small reading note about module pattern in Javascript"
 category: reading notes
-tags: [module]
+tags: [javascript module pattern]
 ---
 {% include JB/setup %}
 
 **A reading notes of <<Learning javascript design patterns>>**
 
 ##Why modules?
-  * It's natural to divide an application to modules.
+  * It's natural to divide an application to modules.  
   * To avoid name conflicts  
   * It provides encapsulation, cohesion inside a module, decouping between modules (may use IOC & DI)
 
@@ -215,3 +215,7 @@ First see an example:
 	  };
 	}());
 
+##Discussion
+For better using module patter, you need to think more about 'What is a module?'.
+
+One clue is to think about cohesion and decoupling, and code management and abstract and encapsulation. These are why we want to use the 'module'.
