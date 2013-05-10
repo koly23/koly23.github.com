@@ -10,41 +10,44 @@ tags: [javascript module pattern]
 **A reading notes of <<Learning javascript design patterns>>**
 
 ##Why modules?
-  * It's natural to divide an application to modules.  
-  * To avoid name conflicts  
-  * It provides encapsulation, cohesion inside a module, decouping between modules (may use IOC & DI)
+* It's natural to divide an application to modules.  
+* To avoid name conflicts  
+* It provides encapsulation, cohesion inside a module, decouping between modules (may use IOC & DI)
 
 ##How?
 Two ways here:
 
-  * module pattern  
-  * object literal  
+* module pattern  
+* object literal  
 
 ####A module defined using object literal syntax:
 
-	var myModule = {
-	  myProperty: 'someValue',
-	  //here another object is defined for configuration purposes:
-	  myConfig: {
-	    useCaching: true,
-	    language: 'en'
-	  },
-	  //a very basic method
-	  myMethod: function() {
-	    console.log('I can haz functionality?');
-	  },
-	  //output a value based on current configuration
-	  myMethod2: function() {
-	    console.log('Caching is: ' + (this.myConfig.useCaching) ? 'enabled' : 'disabled');
-	  },
-	  //override the current configuration
-	  myMethod3: function(newConfig) {
-	    if (typeof newConfig == 'object'){
-	      this.myConfig = newConfig;
-	      console.log(this.myConfig.language);
-	    }
-	  }
-	};
+{% highlight javascript %}
+
+var myModule = {
+  myProperty: 'someValue',
+  //here another object is defined for configuration purposes:
+  myConfig: {
+	useCaching: true,
+	language: 'en'
+  },
+  //a very basic method
+  myMethod: function() {
+	console.log('I can haz functionality?');
+  },
+  //output a value based on current configuration
+  myMethod2: function() {
+	console.log('Caching is: ' + (this.myConfig.useCaching) ? 'enabled' : 'disabled');
+  },
+  //override the current configuration
+  myMethod3: function(newConfig) {
+	if (typeof newConfig == 'object'){
+	  this.myConfig = newConfig;
+	  console.log(this.myConfig.language);
+	}
+  }
+};
+{% endhighlight %}
 Usage:
 
 	myModule.myMethod();
@@ -57,58 +60,62 @@ Usage:
 ####The module pattern
 The module pattern is used to further *emulate* the concept of classes in such a way that we're able to include both public/private methods and variables inside a single object, thus shielding particular parts from the global scope. What this results in is a reduction in the likelihood of your function names conflicting with other functions defined in additional scripts on the page.
 
-The key to encapsulates 'privacy' is to use **closures**.
+The key to encapsulates "privacy" is to use **closures**.
 
 Within the module pattern, variables or methods declared are only available inside the module itself thanks to closure.
 
 A simple example:
+{% highlight javascript %}
 
-	var testModule = (function(){
-	  //private variable
-	  var counter = 0;
-	  return {
-	    incrementCounter: function() {
-	      return counter++;
-	    },
-	    resetCounter: function() {
-	      console.log('counter value prior to reset: ' + counter);
-	      counter = 0;
-	    }
-	  };
-	})();
+  var testModule = (function(){
+    //private variable
+    var counter = 0;
+    return {
+      incrementCounter: function() {
+        return counter++;
+      },
+      resetCounter: function() {
+        console.log('counter value prior to reset: ' + counter);
+        counter = 0;
+      }
+    };
+  })();
+  
+  //test
+  testModule.incrementCounter();
+  testModule.resetCounter();
 	
-	//test
-	testModule.incrementCounter();
-	testModule.resetCounter();
+{% endhighlight %}
+
 We may view the 'testModule' as a 'prefix'.
 
 ##Disadvantage
 
-  * You can't access private members in methods that are added to the object at a later point.
-  * Can't creat automated unit test for private members and additional complexity when bugs require hot fixes.  
-  * It's not easy to extend privates.
+* You can't access private members in methods that are added to the object at a later point.
+* Can't creat automated unit test for private members and additional complexity when bugs require hot fixes.  
+* It's not easy to extend privates.
    
 ##Module in js lib
 We may imagine a module function first:
-
-	var module = function(name){
-      console.log(name);
-      return function(name){
-        var moduleName = name;
-        return {
-          returnName: function(){
-            return moduleName;
-          }
-        };
-      }(name);
+{% highlight javascript %}
+var module = function(name){
+  console.log(name);
+  return function(name){
+    var moduleName = name;
+    return {
+      returnName: function(){
+        return moduleName;
+      }
     };
-
-	var koly = module('koly');
+  }(name);
+};
+var koly = module('koly');
 	
-	console.log(koly);
-	console.log(koly.returnName());
-	koly.gender = 'male';
-	console.log(koly.gender);
+console.log(koly);
+console.log(koly.returnName());
+koly.gender = 'male';
+console.log(koly.gender);
+{% endhighlight %}
 
 ####angular.module in AngularJS
 In AngularJS, there is a `angular.module`, which can be used to create a module.
@@ -118,67 +125,69 @@ We can use it by:
 	var car = angular.module('car');
 
 Dive into the source:
+{% highlight javascript %}
 
-	function setupModuleLoader(window) {
+function setupModuleLoader(window) {
 	
-	  function ensure(obj, name, factory) {
-	    return obj[name] || (obj[name] = factory());
-	  }
+  function ensure(obj, name, factory) {
+	 return obj[name] || (obj[name] = factory());
+  }
 	  
-	  return ensure(ensure(window, 'angular', Object), 'module', function(){
-	    var modules = {};
-	    return function module(name, requires, configFn) {
-	      if (requires && modules.hasOwnProperty(name)) {
-	        modules[name] = null;
+  return ensure(ensure(window, 'angular', Object), 'module', function(){
+	var modules = {};
+	return function module(name, requires, configFn) {
+	  if (requires && modules.hasOwnProperty(name)) {
+	     modules[name] = null;
+	  }
+	  return ensure(modules, name, function() {
+	    if (!requires) {
+	       throw Error('No module: ' + name);
+	    }
+	        
+	    var invokeQueue = [];
+	    var runBlocks = [];
+	    var config = invokeLater('$injector', 'invoke');
+	    var moduleInstance = {
+	          
+	      _invokeQueue: invokeQueue,
+	      _runBlocks: runBlocks,
+	      requires: requires,
+	      name: name,
+	      provider: invokeLater('$provider', 'provider'),
+	      factory: invokeLater('$provider', 'factory'),
+	      service: invokeLater('$provider', 'service'),
+	      value: invokeLater('$provider', 'value'),
+	      constant: invokeLater('$provider', 'constant', 'unshift'),
+	      animation: invokeLater('$animationProvider', 'register'),
+	      filter: invokeLater('$filterProvider', 'register'),
+	      controller: invokeLater('$controllerProvider', 'register'),
+	      directive: invokeLater('$compileProvider', 'directive'),
+	      config: config,
+	      run: function(block) {
+	        runBlocks.push(block);
+	        return this;
 	      }
-	      return ensure(modules, name, function() {
-	        if (!requires) {
-	          throw Error('No module: ' + name);
-	        }
+	     };
 	        
-	        var invokeQueue = [];
-	        var runBlocks = [];
-	        var config = invokeLater('$injector', 'invoke');
-	        var moduleInstance = {
-	          //private state
-	          _invokeQueue: invokeQueue,
-	          _runBlocks: runBlocks,
-	          requires: requires,
-	          name: name,
-	          provider: invokeLater('$provider', 'provider'),
-	          factory: invokeLater('$provider', 'factory'),
-	          service: invokeLater('$provider', 'service'),
-	          value: invokeLater('$provider', 'value'),
-	          constant: invokeLater('$provider', 'constant', 'unshift'),
-	          animation: invokeLater('$animationProvider', 'register'),
-	          filter: invokeLater('$filterProvider', 'register'),
-	          controller: invokeLater('$controllerProvider', 'register'),
-	          directive: invokeLater('$compileProvider', 'directive'),
-	          config: config,
-	          run: function(block) {
-	            runBlocks.push(block);
-	            return this;
-	          }
+	     if (configFn) {
+	        config(configFn);
+	     }
+	        
+	     return moduleInstance;
+	        
+	     function invokeLater(provider, method, insertMethod) {
+	        return function() {
+	          invokeQueue[insertMethod || 'push']([]provider, method, arguments]);
+	          return moduleInstance;
 	        };
-	        
-	        if (configFn) {
-	          config(configFn);
-	        }
-	        
-	        return moduleInstance;
-	        
-	        function invokeLater(provider, method, insertMethod) {
-	          return function() {
-	            invokeQueue[insertMethod || 'push']([]provider, method, arguments]);
-	            return moduleInstance;
-	          };
-	        }
-	      });
+	      }
+	     });
 	    };
 	  });
 	}
-
+{% endhighlight %}
 Usage of setupModuleLoader:
+
 
 	angularModule = setupModuleLoader(window); 
 	try {
@@ -195,26 +204,27 @@ when you call `angularModule`, you acturally are calling `window.angular.module`
 
 ##The Revealing Module Pattern
 First see an example:
+{% highlight javascript linenos=table %}
 
-	var myRevealingModule = (function(){
-	  var name = 'John Smith';
-	  var age = 40;
-	  
-	  function updatePerson(){
-	    name = 'John Smith Updated';
-	  }
-	  function setPerson(){
-	    name = 'John Smith Set';
-	  }
-	  function getPerson(){
-	    return name;
-	  }
-	  return {
-	    set: setPerson,
-	    get: getPerson
-	  };
-	}());
-
+  var myRevealingModule = (function(){
+    var name = 'John Smith';
+    var age = 40;
+    
+    function updatePerson(){
+      name = 'John Smith Updated';
+    }
+    function setPerson(){
+      name = 'John Smith Set';
+    }
+    function getPerson(){
+      return name;
+    }
+    return {
+      set: setPerson,
+      get: getPerson
+    };
+  }());
+{% endhighlight %}
 ##Discussion
 For better using module patter, you need to think more about 'What is a module?'.
 
