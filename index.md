@@ -7,7 +7,7 @@ tagline: Supporting tagline
 ---
 
 {% for post in site.posts %}
-<div style="margin: 2em 0">
+<div style="margin: 2em 0" class="article-title">
 <a href="{{ BASE_PATH }}{{ post.url }}" style="font-size:3em">{{ post.title }}</a>  
 <span style="float:right">{{ post.date | date_to_string }}</span>  
 </div>
