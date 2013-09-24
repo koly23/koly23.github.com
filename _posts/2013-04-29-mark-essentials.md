@@ -116,7 +116,7 @@ Welcome to [koly's blog](http://koly23.github.io/).
 ####Another way is wrap the url with "<>"
 Example:
 
-	<htp://koly23.github.io>
+	<http://koly23.github.io>
 	
 The effect is:
 
