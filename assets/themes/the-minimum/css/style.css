@@ -31,7 +31,7 @@ No styleguide reference.
 
 body {
   /*font-family: Frutiger, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, "MS PGothic", Osaka, Sans-Serif;*/
-  font-family: 'tahoma','宋体','Hiragino Sans GB W3';
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
   font-size: 15px;
   line-height: 1.625em;
 }
@@ -42,8 +42,8 @@ body {
 }
 
 div.unit-head h1.entry-title{
-  font-family: 'alex-brush';
-  font-size: 4em;
+  /*font-family: 'tahoma','宋体','Hiragino Sans GB W3';*/
+  font-size: 3em;
 }
 
 nav ul li.forkme, header p.logo a {
@@ -75,8 +75,8 @@ h4,
 h5,
 h6 {
   /*font-family: junctionregularRegular, "Frutiger Linotype", Univers, Calibri, "Gill Sans", "Gill Sans MT", "Myriad Pro", Myriad, "DejaVu Sans Condensed", "Liberation Sans", "Nimbus Sans L", Tahoma, Geneva, "Helvetica Neue", Helvetica, Arial, "MS PGothic", Osaka, Sans-Serif;*/
-  font-family: 'Michroma','Segoe UI Light','Segoe UI','Segoe UI WP','Microsoft Jhenghei','微软雅黑','sans-serif','Times';
-  font-weight: bold;
+  font-family: "Helvetica Neue",Helvetica,Arial,sans-serif;
+  font-weight: normal;
 }
 h1, .h1 {
   font-size: 42px;
