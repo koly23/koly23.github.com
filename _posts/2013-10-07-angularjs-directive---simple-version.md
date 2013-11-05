@@ -194,7 +194,7 @@ app.directive('camelCase', function(){
 });
 {% endhighlight %}
 
-By using iAttrs.camelCase, you can get the value passed to the link function.
+By using `iAttrs.camelCase`, you can get the value passed to the link function.
 
 
 *communicate with other directives who has a controller on the same element*
